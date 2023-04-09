@@ -12,6 +12,10 @@
 		61079E6629D2A51000FF2EFD /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61079E6529D2A51000FF2EFD /* WorkoutView.swift */; };
 		61079E6829D3E7B500FF2EFD /* QuantitySample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61079E6729D3E7B500FF2EFD /* QuantitySample.swift */; };
 		61079E6A29D3F6FA00FF2EFD /* QuantityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61079E6929D3F6FA00FF2EFD /* QuantityType.swift */; };
+		61079E6C29D51EF200FF2EFD /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61079E6B29D51EF200FF2EFD /* DummyData.swift */; };
+		61079E6E29D5503600FF2EFD /* QuantitySampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61079E6D29D5503600FF2EFD /* QuantitySampleView.swift */; };
+		61079E7029D7AA3300FF2EFD /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61079E6F29D7AA3300FF2EFD /* LocationModel.swift */; };
+		61079E7229D7B23500FF2EFD /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61079E7129D7B23500FF2EFD /* LocationView.swift */; };
 		6189038729A8557D00D2B727 /* HealthKitExportApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6189038629A8557D00D2B727 /* HealthKitExportApp.swift */; };
 		6189038929A8557D00D2B727 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6189038829A8557D00D2B727 /* ContentView.swift */; };
 		6189038B29A8557F00D2B727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6189038A29A8557F00D2B727 /* Assets.xcassets */; };
@@ -50,6 +54,10 @@
 		61079E6529D2A51000FF2EFD /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		61079E6729D3E7B500FF2EFD /* QuantitySample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitySample.swift; sourceTree = "<group>"; };
 		61079E6929D3F6FA00FF2EFD /* QuantityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityType.swift; sourceTree = "<group>"; };
+		61079E6B29D51EF200FF2EFD /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
+		61079E6D29D5503600FF2EFD /* QuantitySampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitySampleView.swift; sourceTree = "<group>"; };
+		61079E6F29D7AA3300FF2EFD /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		61079E7129D7B23500FF2EFD /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		6189038329A8557D00D2B727 /* HealthKitExport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthKitExport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6189038629A8557D00D2B727 /* HealthKitExportApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitExportApp.swift; sourceTree = "<group>"; };
 		6189038829A8557D00D2B727 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				618903B829A8750700D2B727 /* HKRepository.swift */,
+				61079E6B29D51EF200FF2EFD /* DummyData.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -178,6 +187,8 @@
 			children = (
 				61079E6329CD6B5900FF2EFD /* HeartRateListView.swift */,
 				61079E6529D2A51000FF2EFD /* WorkoutView.swift */,
+				61079E6D29D5503600FF2EFD /* QuantitySampleView.swift */,
+				61079E7129D7B23500FF2EFD /* LocationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,6 +209,7 @@
 				61079E6129CD638500FF2EFD /* HeartRateStat.swift */,
 				61079E6729D3E7B500FF2EFD /* QuantitySample.swift */,
 				61079E6929D3F6FA00FF2EFD /* QuantityType.swift */,
+				61079E6F29D7AA3300FF2EFD /* LocationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -354,10 +366,14 @@
 				618903B929A8750700D2B727 /* HKRepository.swift in Sources */,
 				6189038929A8557D00D2B727 /* ContentView.swift in Sources */,
 				6189038729A8557D00D2B727 /* HealthKitExportApp.swift in Sources */,
+				61079E7229D7B23500FF2EFD /* LocationView.swift in Sources */,
 				61F5AE4E29BFC9DF00A4CD2E /* WorkoutService.swift in Sources */,
 				61079E6429CD6B5900FF2EFD /* HeartRateListView.swift in Sources */,
+				61079E7029D7AA3300FF2EFD /* LocationModel.swift in Sources */,
+				61079E6E29D5503600FF2EFD /* QuantitySampleView.swift in Sources */,
 				61F5AE5029BFCD3700A4CD2E /* HealthStoreSingleton.swift in Sources */,
 				61079E6829D3E7B500FF2EFD /* QuantitySample.swift in Sources */,
+				61079E6C29D51EF200FF2EFD /* DummyData.swift in Sources */,
 				618903C029A993E200D2B727 /* WorkoutModel.swift in Sources */,
 				618903B729A8748200D2B727 /* HealthStat.swift in Sources */,
 				618903BE29A9916300D2B727 /* WorkoutViewModel.swift in Sources */,
@@ -660,7 +676,7 @@
 				618903A629A8558000D2B727 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		618903A729A8558000D2B727 /* Build configuration list for PBXNativeTarget "HealthKitExport" */ = {
 			isa = XCConfigurationList;
@@ -669,7 +685,7 @@
 				618903A929A8558000D2B727 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		618903AA29A8558000D2B727 /* Build configuration list for PBXNativeTarget "HealthKitExportTests" */ = {
 			isa = XCConfigurationList;
@@ -678,7 +694,7 @@
 				618903AC29A8558000D2B727 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		618903AD29A8558000D2B727 /* Build configuration list for PBXNativeTarget "HealthKitExportUITests" */ = {
 			isa = XCConfigurationList;
@@ -687,7 +703,7 @@
 				618903AF29A8558000D2B727 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

@@ -14,11 +14,14 @@ struct ContentView: View {
     @StateObject var workoutViewModel = WorkoutViewModel()
     
     var body: some View {
-        List{
-            ForEach(workoutViewModel.workouts) { w in
-                WorkoutView(w: w)
+        if !workoutViewModel.workouts.isEmpty {
+            List{
+                ForEach(workoutViewModel.workouts) { w in
+                    WorkoutView(w: w)
+                }
             }
         }
+        
     }
                     
 //        List(workoutViewModel.workouts) { w in

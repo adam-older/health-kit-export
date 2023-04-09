@@ -9,18 +9,18 @@ import SwiftUI
 
 struct HeartRateListView: View {
     
-    @State var HeartRateList: [HeartRateStat]
+    @State var HeartRateSamples: [QuantitySample]
     
-    init(heartRateList: [HeartRateStat]) {
-        HeartRateList = heartRateList
+    init(heartRateSamples: [QuantitySample]) {
+        HeartRateSamples = heartRateSamples
     }
     
     var body: some View {
         VStack {
             Text("Heart Rate")
             List() {
-                ForEach(HeartRateList) { list in
-                    /*@START_MENU_TOKEN@*/Text(list.HeartRate)/*@END_MENU_TOKEN@*/
+                ForEach(HeartRateSamples) { sample in
+                    Text(sample.quantity.formatted())
                 }
             }
         }
@@ -31,6 +31,6 @@ struct HeartRateListView: View {
 struct HeartRateListView_Previews: PreviewProvider {
 
     static var previews: some View {
-        HeartRateListView(heartRateList: [HeartRateStat(HeartRate: "120"), HeartRateStat(HeartRate: "110"), HeartRateStat(HeartRate: "122")])
+        HeartRateListView(heartRateSamples: DummyData().heartRateSample)
     }
 }

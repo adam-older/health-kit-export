@@ -17,14 +17,14 @@ struct WorkoutView: View {
             Text("Duration " + (w.workout?.duration.formatted() ?? ""))
             Text("Total Distance " + w.totalDistance.formatted())
             Text("Average Heart Rate " + w.AverageHeartRate.formatted())
-            HeartRateListView(heartRateList: w.HeartRateList)
-
+            HeartRateListView(heartRateSamples: w.HeartRateSamples)
+            LocationView(locationList: w.LocationList)
             }
     }
 }
 
 struct WorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutView(w: WorkoutModel(workout: HKWorkout(activityType: .running, start: .now, end: .now+1, duration: 3600, totalEnergyBurned: HKQuantity(unit: .kilocalorie(), doubleValue: 200), totalDistance: HKQuantity(unit: .mile(), doubleValue: 2), metadata: [:]), totalDistance: 2, AverageHeartRate: 150, HeartRateList: [HeartRateStat(HeartRate: "120"), HeartRateStat(HeartRate: "110"), HeartRateStat(HeartRate: "122")]))
+        WorkoutView(w: DummyData().workouts[0])
     }
 }

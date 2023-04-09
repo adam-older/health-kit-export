@@ -7,6 +7,7 @@
 
 import Foundation
 import HealthKit
+import CoreLocation
 
 class HKRepository {
     var store: HKHealthStore?
@@ -91,6 +92,40 @@ class HKRepository {
         return workouts
     }
     
+    func getWorkoutRouteLocations(myRoute: HKWorkoutRoute) -> [CLLocation]? {
+        guard let store = store else {
+            return nil
+        }
+        var locationsList = [CLLocation]()
+        // Create the route query.
+        let query = HKWorkoutRouteQuery(route: myRoute) { (query, locationsOrNil, done, errorOrNil) in
+            
+            // This block may be called multiple times.
+            
+            if let error = errorOrNil {
+                // Handle any errors here.
+                return
+            }
+            
+            guard let locations = locationsOrNil else {
+                fatalError("*** Invalid State: This can only fail if there was an error. ***")
+            }
+            
+            locationsList.append(contentsOf: locations)
+                
+            if done {
+                // The query returned all the location data associated with the route.
+                // Do something with the complete data set.
+            }
+            
+            // You can stop the query by calling:
+            // store.stop(query)
+            
+        }
+        store.execute(query)
+        return locationsList
+    }
+    
     func getSplitData(workout: HKWorkout) -> [HKQuantitySample] {
 //        let distanceType = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)
         var quantitySample = [HKQuantitySample]()
@@ -137,9 +172,9 @@ class HKRepository {
         let workoutPredicate = HKQuery.predicateForObjects(from: workout)
         let samplePredicate = HKSamplePredicate.quantitySample(type: quantityType, predicate: workoutPredicate)
         let descriptor = HKSampleQueryDescriptor(predicates: [samplePredicate], sortDescriptors: [SortDescriptor(\.endDate, order: .forward)], limit: nil)
-        let results: [HKQuantitySample] = [HKQuantitySample]()
+        var results: [HKQuantitySample] = [HKQuantitySample]()
         do {
-            let results = try await descriptor.result(for: store!)
+            results = try await descriptor.result(for: store!)
         } catch {
             print(error)
         }
@@ -183,34 +218,34 @@ class HKRepository {
 //        return totalDistance
 //    }
     
-//    func getLocationDataForRoute(givenRoute: HKWorkoutRoute) async -> [CLLocation] {
-//        let locations = try! await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[CLLocation], Error>) in
-//            var allLocations: [CLLocation] = []
-//
-//            // Create the route query.
-//            let query = HKWorkoutRouteQuery(route: givenRoute) { (query, locationsOrNil, done, errorOrNil) in
-//
-//                if let error = errorOrNil {
-//                    continuation.resume(throwing: error)
-//                    return
-//                }
-//
-//                guard let currentLocationBatch = locationsOrNil else {
-//                    fatalError("*** Invalid State: This can only fail if there was an error. ***")
-//                }
-//
-//                allLocations.append(contentsOf: currentLocationBatch)
-//
-//                if done {
-//                    continuation.resume(returning: allLocations)
-//                }
-//            }
-//
-//            store.execute(query)
-//        }
-//
-//        return locations
-//    }
+    func getLocationDataForRoute(givenRoute: HKWorkoutRoute) async -> [CLLocation] {
+        let locations = try! await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[CLLocation], Error>) in
+            var allLocations: [CLLocation] = []
+
+            // Create the route query.
+            let query = HKWorkoutRouteQuery(route: givenRoute) { (query, locationsOrNil, done, errorOrNil) in
+
+                if let error = errorOrNil {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                guard let currentLocationBatch = locationsOrNil else {
+                    fatalError("*** Invalid State: This can only fail if there was an error. ***")
+                }
+
+                allLocations.append(contentsOf: currentLocationBatch)
+
+                if done {
+                    continuation.resume(returning: allLocations)
+                }
+            }
+
+            store!.execute(query)
+        }
+
+        return locations
+    }
 
 
     
